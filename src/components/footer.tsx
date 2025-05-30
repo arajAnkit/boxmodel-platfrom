@@ -11,10 +11,10 @@ export const Footer = () => {
           {/* Brand */}
           <div className="md:col-span-2">
             <Link href="/" className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-r from-fuchsia-500 to-mint-400 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-gradient-to-r from-fuchsia-500 to-teal-400 rounded-lg flex items-center justify-center">
                 <BookOpen className="w-5 h-5 text-white" />
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-fuchsia-400 to-mint-300 bg-clip-text text-transparent">
+              <span className="text-xl font-bold bg-gradient-to-r from-fuchsia-400 to-teal-300 bg-clip-text text-transparent">
                 BoxMaster
               </span>
             </Link>
@@ -32,13 +32,13 @@ export const Footer = () => {
               </a>
               <a
                 href="#"
-                className="text-gray-400 hover:text-mint-400 transition-colors"
+                className="text-gray-400 hover:text-teal-400 transition-colors"
               >
                 <Twitter className="w-5 h-5" />
               </a>
               <a
                 href="#"
-                className="text-gray-400 hover:text-tangerine-400 transition-colors"
+                className="text-gray-400 hover:text-amber-400 transition-colors"
               >
                 <Mail className="w-5 h-5" />
               </a>
@@ -88,7 +88,7 @@ export const Footer = () => {
 
           {/* Resources */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-mint-400">
+            <h3 className="text-lg font-semibold mb-4 text-teal-400">
               Resources
             </h3>
             <ul className="space-y-2">

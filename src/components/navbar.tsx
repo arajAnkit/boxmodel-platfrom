@@ -1,8 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { useTheme } from "next-themes";
+import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
+
 import {
   Moon,
   Sun,
@@ -14,11 +16,16 @@ import {
   FileText,
   Zap,
 } from "lucide-react";
-import { useTheme } from "next-themes";
+
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
 export const Navbar = () => {
+  const pathname = usePathname();
+
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+
   const { theme, setTheme } = useTheme();
 
   useEffect(() => {
@@ -33,10 +40,10 @@ export const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-fuchsia-500 to-mint-400 rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-gradient-to-r from-fuchsia-500 to-teal-400 rounded-lg flex items-center justify-center">
               <BookOpen className="w-5 h-5 text-white" />
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-fuchsia-600 to-mint-500 bg-clip-text text-transparent">
+            <span className="text-xl font-bold bg-gradient-to-r from-fuchsia-600 to-teal-500 bg-clip-text text-transparent">
               BoxMaster
             </span>
           </Link>
@@ -45,38 +52,50 @@ export const Navbar = () => {
           <div className="hidden md:flex items-center space-x-8">
             <Link
               href="/"
-              className="text-foreground hover:text-fuchsia-500 transition-colors"
+              className={cn(
+                "text-foreground hover:text-fuchsia-500 transition-colors",
+                pathname === "/" && "text-fuchsia-500"
+              )}
             >
               Home
             </Link>
             <Link
               href="/theory"
-              className="text-foreground hover:text-mint-500 transition-colors flex items-center space-x-1"
+              className={cn(
+                "text-foreground hover:text-teal-500 transition-colors flex items-center space-x-1",
+                pathname === "/theory" && "text-teal-500"
+              )}
             >
-              <GraduationCap className="w-4 h-4" />
               <span>Theory</span>
             </Link>
             <Link
               href="/demos"
-              className="text-foreground hover:text-tangerine-500 transition-colors flex items-center space-x-1"
+              className={cn(
+                "text-foreground hover:text-amber-500 transition-colors flex items-center space-x-1",
+                pathname === "/demos" && "text-amber-500"
+              )}
             >
-              <Zap className="w-4 h-4" />
               <span>Demos</span>
             </Link>
             <Link
               href="/game"
-              className="text-foreground hover:text-fuchsia-500 transition-colors flex items-center space-x-1"
+              className={cn(
+                "text-foreground hover:text-fuchsia-500 transition-colors flex items-center space-x-1",
+                pathname === "/game" && "text-fuchsia-500"
+              )}
             >
-              <Gamepad2 className="w-4 h-4" />
               <span>Game</span>
             </Link>
             <Link
               href="/cheatsheet"
-              className="text-foreground hover:text-mint-500 transition-colors flex items-center space-x-1"
+              className={cn(
+                "text-foreground hover:text-teal-500 transition-colors flex items-center space-x-1",
+                pathname === "/cheatsheet" && "text-teal-500"
+              )}
             >
-              <FileText className="w-4 h-4" />
               <span>Cheat Sheet</span>
             </Link>
+
             <Button
               variant="ghost"
               size="icon"
@@ -131,7 +150,7 @@ export const Navbar = () => {
               </Link>
               <Link
                 href="/theory"
-                className="text-foreground hover:text-mint-500 transition-colors flex items-center space-x-1"
+                className="text-foreground hover:text-teal-500 transition-colors flex items-center space-x-1"
                 onClick={() => setIsOpen(false)}
               >
                 <GraduationCap className="w-4 h-4" />
@@ -139,7 +158,7 @@ export const Navbar = () => {
               </Link>
               <Link
                 href="/demos"
-                className="text-foreground hover:text-tangerine-500 transition-colors flex items-center space-x-1"
+                className="text-foreground hover:text-amber-500 transition-colors flex items-center space-x-1"
                 onClick={() => setIsOpen(false)}
               >
                 <Zap className="w-4 h-4" />
@@ -155,7 +174,7 @@ export const Navbar = () => {
               </Link>
               <Link
                 href="/cheatsheet"
-                className="text-foreground hover:text-mint-500 transition-colors flex items-center space-x-1"
+                className="text-foreground hover:text-teal-500 transition-colors flex items-center space-x-1"
                 onClick={() => setIsOpen(false)}
               >
                 <FileText className="w-4 h-4" />
